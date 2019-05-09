@@ -40,7 +40,7 @@
         :key="index"
         class="scroll-view-list"
       >
-        <md-field-item :title="item.nick" :brief="'音泡id:' + item.id">
+        <md-cell-item :title="item.nick" :brief="'音泡id:' + item.id">
           <md-tag
             size="large"
             shape="bubble"
@@ -49,7 +49,7 @@
           >{{ item.level }}</md-tag>
           <img class="holder" slot="left" :src="item.portrait" />
           <md-tag slot="right"><span v-on:click="update(item, index)">获取最新</span></md-tag>
-        </md-field-item>
+        </md-cell-item>
       </div>
       <md-button :type="loading ? 'disabled': 'primary'" size="small" inline v-on:click="loadMore" :inactive="loading">{{ loading ? '正在加载': '加载更多' }}</md-button>
     </md-field>
@@ -57,7 +57,7 @@
 </template>
 
 <script>
-  import {ScrollView, ScrollViewMore, Field, FieldItem, Tag, Button, Toast, InputItem} from 'mand-mobile';
+  import {ScrollView, ScrollViewMore, Field, CellItem, Tag, Button, Toast, InputItem} from 'mand-mobile';
   import axios from 'axios';
 
   export default {
@@ -66,7 +66,7 @@
       [ScrollView.name]: ScrollView,
       [ScrollViewMore.name]: ScrollViewMore,
       [Field.name]: Field,
-      [FieldItem.name]: FieldItem,
+      [CellItem.name]: CellItem,
       [Tag.name]: Tag,
       [Button.name]: Button,
       [InputItem.name]: InputItem,
@@ -164,7 +164,7 @@
   .scroll-view-item
     padding 30px 0
     text-align center
-    font-size 32px
+    /*font-size 32px*/
     font-family DINAlternate-Bold
     border-bottom .5px solid #efefef
   .holder

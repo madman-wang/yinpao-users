@@ -4,8 +4,8 @@ import Vue from 'vue'
 import * as FastClick from "fastclick"
 import App from './App'
 import router from './router'
-import './styles/theme.styl'
 import './styles/global.css'
+import 'mand-mobile/lib/mand-mobile.css'
 
 FastClick.attach(document.body)
 
