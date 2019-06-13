@@ -11,7 +11,7 @@
             总消费<md-tag shape="circle" type="fill" fill-color="#FC7353">￥{{ Math.ceil(item.count / 10) }}</md-tag>
           </div>
           <div>
-            五分钟前<md-tag shape="circle" type="fill" fill-color="#FC7353">￥{{ Math.ceil(item.oldCount / 10) }}</md-tag>
+            10分钟前<md-tag shape="circle" type="fill" fill-color="#FC7353">￥{{ Math.ceil(item.oldCount / 10) }}</md-tag>
           </div>
           <div>
             上升<md-tag>￥{{ Math.ceil(item.diffCount / 10) }}</md-tag>
@@ -68,6 +68,7 @@
       },
       fetch() {
         const { size } = this;
+        const { gender } = this.$route.query;
         const params = {
           order: '-createdAt',
           limit: 1,
@@ -81,7 +82,7 @@
             'X-LC-Key': 'QGh2qW5LhmjWuKjKaLSaj2rn',
           }
         }).then((res) => {
-          const list = res.data.results[0].list;
+          const list = res.data.results[0].list.filter(item => item.user.gender === parseInt(gender, 10));
           this.loading = false;
           this.totalList = list;
           this.list = list.slice(0, size);
